@@ -1,3 +1,53 @@
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer components {
+    .main__header__item 
+    {
+        @apply text-green-400 font-semibold text-[17px] hover:text-green-300
+    }
+
+    .main__holder
+    {
+        width: calc(100% - 30px);
+        /* height: calc(100vh - 104px); */
+        /* height: 500px; */
+        /* background-color: rgb(226, 245, 234); */
+        margin: 15px;
+        border-radius: 10px;
+    }
+
+    .wall__img {
+        clip-path: ellipse(61% 63% at 66% 47%);
+    }
+
+    .feedback__img {
+        clip-path: ellipse(62% 67% at 37% 51%);
+    }
+}
+
+@layer components 
+{
+    .text__pink__double 
+    {
+        background: #46DDFF;
+        background: linear-gradient(to right, #46DDFF 47%, #FF8FF9 59%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        
+    }
+
+    .text__for__main 
+    {
+        font-size: 45px;
+    }
+
+    .text__for__main__bolt 
+    {
+        font-weight: 600;   
+    }
+}

@@ -19,7 +19,7 @@
 
   <div class="grid grid-cols-4 m-3 gap-2 bg-slate-100 rounded-md p-2">
 
-    <!--Start Packege URL -->
+    <!--Start Customer ID  -->
     <div>
         <label for="">Customer Contact Id</label>
     </div>
@@ -28,7 +28,7 @@
             <input type="text" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"/>
         </div>
     </div>
-    <!--End Packege URL -->
+    <!--End Customer ID -->
 
 
    <!--Start Marketing Manager Type -->
@@ -58,6 +58,32 @@
     </div>
     <!--End Marketing Manager -->
 
+    
+     <!--Start Packege URL -->
+     <div>
+        <label for="">Is Sale Done</label>
+    </div>
+    <div class="col-span-3">
+        <div class="max-w-lx space-y-3">
+            <div class="grid space-y-2">
+                <label for="hs-vertical-radio-in-form" class="max-w-xs flex p-3 w-full bg-white border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+                  <input type="radio" name="hs-vertical-radio-in-form" class="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-vertical-radio-in-form">
+                  <span class="text-sm text-gray-500 ms-3 dark:text-neutral-400">Cancel</span>
+                </label>
+              
+                <label for="hs-vertical-radio-checked-in-form" class="max-w-xs flex p-3 w-full bg-white border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+                  <input type="radio" name="hs-vertical-radio-in-form" class="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-vertical-radio-checked-in-form" checked="">
+                  <span class="text-sm text-gray-500 ms-3 dark:text-neutral-400">Pending</span>
+                </label>
+
+                <label for="hs-vertical-radio-checked-in-form" class="max-w-xs flex p-3 w-full bg-white border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+                    <input type="radio" name="hs-vertical-radio-in-form" class="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-vertical-radio-checked-in-form" checked="">
+                    <span class="text-sm text-gray-500 ms-3 dark:text-neutral-400">Done</span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <!--End Packege URL -->
 
 
     <!-- Btn -->
