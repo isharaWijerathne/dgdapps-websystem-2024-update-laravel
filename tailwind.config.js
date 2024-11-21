@@ -10,6 +10,7 @@ export default {
         "./resources/**/*.blade.php",
         "./resources/**/*.js",
         'node_modules/preline/dist/*.js',
+        
     ],
 
     theme: {

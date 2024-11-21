@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CareersController;
+use App\Http\Controllers\PackageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -7,19 +9,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/packages', function () {
-    return view(view: 'packages');
-})->name("packages");
-
 
 Route::get('/news', function () {
     return view(view: 'news');
 })->name("news");
-
-
-Route::get('/careers', function () {
-    return view(view: 'careers');
-})->name("careers");
 
 
 Route::get('/contact-us', function () {
@@ -28,6 +21,23 @@ Route::get('/contact-us', function () {
 
 
 
+
+
+//careers route
+Route::get("/careers",[CareersController::class,"index"])->name("careers");
+Route::post("admin/careers/careers-create",[CareersController::class,"create"])->name("careers-create");
+Route::get("admin/careers/careers-list",[CareersController::class,"showCareersList"])->name("careers-list");
+Route::get("admin/careers/edit-careers/{id}",[CareersController::class,"showEditWindow"])->name("edit-careers");
+Route::post("",[CareersController::class,"editCareers"])->name("edit-careers-post");
+Route::delete("admin/careers/delete",[CareersController::class,"deletePost"])->name("delete-careers");
+Route::put("admin/careers/change-status",[CareersController::class,"changeStatus"])->name("change-status");
+
+
+
+
+//package
+Route::get("packages",[PackageController::class,'index'])->name("packages");
+Route::post('',[PackageController::class,"createPackage"])->name('package-create');
 
 
 
@@ -80,14 +90,10 @@ Route::get("admin/careers/create-careers",function(){
     return view("admin.careers.create-careers");
 })->name("create-careers");
 
-Route::get("admin/careers/edit-careers",function(){
-    return view("admin.careers.edit-careers");
-})->name("edit-careers");
 
 
-Route::get("admin/careers/careers-list",function(){
-    return view("admin.careers.careers-list");
-})->name("careers-list");
+
+
 
 //admin -> careers end
 
