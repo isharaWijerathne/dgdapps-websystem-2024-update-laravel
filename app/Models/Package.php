@@ -17,7 +17,8 @@ class Package extends Model
         'card_url',
         'created_time',
         'body',
-        'is_active'
+        'is_active',
+        'price'
     ];
 
 

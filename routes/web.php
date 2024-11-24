@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\CareersController;
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\NewsImgController;
 use App\Http\Controllers\PackageController;
+use App\Http\Controllers\PackageImgController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,16 +31,48 @@ Route::get("/careers",[CareersController::class,"index"])->name("careers");
 Route::post("admin/careers/careers-create",[CareersController::class,"create"])->name("careers-create");
 Route::get("admin/careers/careers-list",[CareersController::class,"showCareersList"])->name("careers-list");
 Route::get("admin/careers/edit-careers/{id}",[CareersController::class,"showEditWindow"])->name("edit-careers");
-Route::post("",[CareersController::class,"editCareers"])->name("edit-careers-post");
+Route::post("admin/careers/edit-careers",[CareersController::class,"editCareers"])->name("edit-careers-post");
 Route::delete("admin/careers/delete",[CareersController::class,"deletePost"])->name("delete-careers");
-Route::put("admin/careers/change-status",[CareersController::class,"changeStatus"])->name("change-status");
+Route::put("admin/careers/change-status",[CareersController::class,"changeStatus"])->name("careers-change-status");
 
 
 
 
 //package
-Route::get("packages",[PackageController::class,'index'])->name("packages");
-Route::post('',[PackageController::class,"createPackage"])->name('package-create');
+Route::get("/packages",[PackageController::class,'index'])->name("packages");
+Route::post('/admin/packages/create-package',[PackageController::class,"createPackage"])->name('package-create');
+Route::get("admin/packages/package-list",[PackageController::class,'showList'])->name("package-list");
+Route::get("admin/packages/edit-package/{id}",[PackageController::class,'showEditWindow'])->name("edit-package");
+Route::post("admin/packages/edit-package",[PackageController::class,'EditPackage'])->name("edit-package-post");
+Route::put("admin/packages/change-status",[PackageController::class,"changeStatus"])->name("package-change-status");
+Route::delete("admin/packages/delete",[PackageController::class,"deletePackage"])->name("delete-package");
+
+
+//packageImage
+Route::post("admin/package-imgs/change-status",[PackageImgController::class,"changeStatus"])->name("package-img-change-status");
+Route::delete("admin/package-imgs/delete",[PackageImgController::class,"deleteImg"])->name("package-img-delete");
+
+
+
+//news
+Route::post('admin/news/create-news',[NewsController::class,"createNews"])->name("create-news");
+Route::get('admin/news/news-list',[NewsController::class,"showList"])->name("news-list");
+Route::get("admin/news/edit-news/{id}",[NewsController::class,'showEditWindow'])->name("edit-news");
+Route::post("admin/news/edit-news/",[NewsController::class,'editNews'])->name("edit-news-post");
+Route::put("admin/news/change-status",[NewsController::class,"changeStatus"])->name("news-change-status");
+Route::delete("admin/news/delete",[NewsController::class,"deletePackage"])->name("delete-news");
+
+
+
+
+//newsImgs
+Route::post("admin/news-imgs/change-status",[NewsImgController::class,"changeStatus"])->name("news-img-change-status");
+Route::delete("admin/news-imgs/delete",[NewsImgController::class,"deleteImg"])->name("news-img-delete");
+
+
+
+
+
 
 
 
@@ -54,17 +89,10 @@ Route::get("admin/packages/create-package",function(){
     return view('admin.packages.create-package');
 })->name("create-package");
 
-Route::get("admin/packages/edit-package",function(){
-    return view('admin.packages.edit-package');
-})->name("edit-package");
 
-Route::get("admin/packages/edit-package",function(){
-    return view('admin.packages.edit-package');
-})->name("edit-package");
 
-Route::get("admin/packages/package-list",function(){
-    return view('admin.packages.package-list');
-})->name("package-list");
+
+
 // admin -> package end
 
 
@@ -73,13 +101,6 @@ Route::get("admin/news/create-news",function(){
     return view("admin.news.create-news");
 })->name("create-news");
 
-Route::get("admin/news/edit-news",function(){
-    return view("admin.news.edit-news");
-})->name("edit-news");
-
-Route::get("admin/news/news-list",function(){
-    return view("admin.news.news-list");
-})->name("news-list");
 
 //admin -> news end
 

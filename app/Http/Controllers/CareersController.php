@@ -38,9 +38,7 @@ class CareersController extends Controller
 
          //get last created instance
 
-         $last_created_db_recode = Careers::query()
-                                        ->orderByDesc("careers_id")
-                                        ->first();
+         $last_created_db_recode = Careers::query()->orderByDesc("careers_id")->first();
 
             
          // create new id
@@ -70,9 +68,9 @@ class CareersController extends Controller
 
        } catch (\Throwable $th) {
 
-
+        
          //error handle
-         return redirect()->back()->with("error","Your action has been canceled");
+          return redirect()->back()->with("error","Your action has been canceled");
          
        }
 
@@ -195,3 +193,5 @@ class CareersController extends Controller
       }
     }
 }
+
+

@@ -115,7 +115,7 @@
                       <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">{{ $item->header_url }}</td>
                       <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
                         <div>
-                          {{!! $item->body !!}}
+                          {!! $item->body !!}
                         </div>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">{{ $item->seat }}</td>
@@ -137,7 +137,7 @@
                           <a href="{{ route("edit-careers",$item->careers_id) }}" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-green-600 hover:text-green-800 focus:outline-none focus:text-green-800 disabled:opacity-50 disabled:pointer-events-none dark:text-green-500 dark:hover:text-green-400 dark:focus:text-green-400">Edit</a>
                         </div>
                         <div>
-                          <form action="{{ route("change-status") }}" method="POST">
+                          <form action="{{ route("careers-change-status") }}" method="POST">
 
                              <!--CSRF-->
                              @csrf

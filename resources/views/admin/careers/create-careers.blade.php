@@ -155,13 +155,12 @@
                     <p>Some initial <strong>bold</strong> text</p>
                     <p><br /></p>
                 </div>
-                <input class=" w-[450px]" name="news_body"  type="hidden"  id="body"  placeholder="News Header"/>
+                <input  name="body"  type="hidden"  id="body"  placeholder="News Header"/>
             </div>
         </div>
         <!--End Careers Body -->
 
-        <!-- hiddenBoy -->
-        <input type="hidden" name="body" id="body"/>
+       
 
         <!-- Btn -->
         <div>
