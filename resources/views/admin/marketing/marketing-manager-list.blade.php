@@ -17,6 +17,75 @@
     <p class=" m-3 text-blue-600 text-2xl  font-bold">Marketing Manager List</p>
   </div>
 
+   <!--Validatoer-->
+   <div class=" m-2">
+      
+    @if(session('success'))
+        <div class=" session__message space-y-5">
+            <div class="bg-teal-50 border-t-2 border-teal-500 rounded-lg p-4 dark:bg-teal-800/30" role="alert" tabindex="-1" aria-labelledby="hs-bordered-success-style-label">
+            <div class="flex">
+                <div class="shrink-0">
+                <!-- Icon -->
+                <span class="inline-flex justify-center items-center size-8 rounded-full border-4 border-teal-100 bg-teal-200 text-teal-800 dark:border-teal-900 dark:bg-teal-800 dark:text-teal-400">
+                    <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
+                    <path d="m9 12 2 2 4-4"></path>
+                    </svg>
+                </span>
+                <!-- End Icon -->
+                </div>
+                <div class="ms-3">
+                <h3 id="hs-bordered-success-style-label" class="text-gray-800 font-semibold dark:text-white">
+                    Successfully updated.
+                </h3>
+                <p class="text-sm text-gray-700 dark:text-neutral-400">
+                    {{ session('success') }}
+                </p>
+                </div>
+            </div>
+        </div> 
+    @endif
+
+    @if(session('error'))
+        <div class=" session__message bg-red-50 border-s-4 border-red-500 p-4 dark:bg-red-800/30" role="alert" tabindex="-1" aria-labelledby="hs-bordered-red-style-label">
+            <div class="flex">
+            <div class="shrink-0">
+                <!-- Icon -->
+                <span class="inline-flex justify-center items-center size-8 rounded-full border-4 border-red-100 bg-red-200 text-red-800 dark:border-red-900 dark:bg-red-800 dark:text-red-400">
+                <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 6 6 18"></path>
+                    <path d="m6 6 12 12"></path>
+                </svg>
+                </span>
+                <!-- End Icon -->
+            </div>
+                <div class="ms-3">
+                <h3 id="hs-bordered-red-style-label" class="text-gray-800 font-semibold dark:text-white">
+                    Error!
+                </h3>
+                <p class="text-sm text-gray-700 dark:text-neutral-400">
+                    {{ session('error') }}
+                </p>
+                </div>
+                </div>
+            </div>
+        </div>
+    @endif
+
+    <script>
+        const errDiv = document.getElementsByClassName("session__message");
+        if(errDiv.length != 0){
+            let hiddenInterval = setInterval(() =>{
+            errDiv[0].classList.add("hidden");
+            clearInterval(hiddenInterval);
+            },8000)
+        }
+    </script>
+
+  </div>
+
+
+
   <div class="m-2 bg-slate-100 p-1 rounded border">
     <div class="flex flex-col">
       <div class="-m-1.5 overflow-x-auto">
@@ -31,24 +100,50 @@
                   <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Email</th>
                   <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Status</th>
                   <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Action</th>
-                
+                </tr>
               </thead>
               <tbody class="divide-y divide-gray-200 dark:divide-neutral-700">
-                <tr>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">MKD-00001</td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">Anura</td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">Kumara</td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
-                    anuraKuma@gmail.com
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">Active</td>
-                  <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                    <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-red-600 hover:text-red-800 focus:outline-none focus:text-red-800 disabled:opacity-50 disabled:pointer-events-none dark:text-red-500 dark:hover:text-red-400 dark:focus:text-red-400">Change Status</button>
-                    <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-green-600 hover:text-green-800 focus:outline-none focus:text-green-800 disabled:opacity-50 disabled:pointer-events-none dark:text-green-500 dark:hover:text-green-400 dark:focus:text-green-400">View Activity</button>
-                  </td>
-                </tr>
-    
                
+                @foreach ($mks as $item)
+                  <tr>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">{{ $item->mm_id }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">{{ $item->first_name }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">{{ $item->last_name }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">{{ $item->email }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">{{ $item->is_active == true ? "Active" : "Deactivate" }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                      
+                        <div>
+                          <form action="{{  route("delete_mk") }}"  method="POST" >
+                            <!--CSRF-->
+                            @csrf
+
+                            <!--Method-->
+                            @method('DELETE')
+                              <input type="hidden" name="id" value="{{ $item->mm_id }}" />
+                              <button type="submit" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-red-600 hover:text-red-800 focus:outline-none focus:text-red-800 disabled:opacity-50 disabled:pointer-events-none dark:text-red-500 dark:hover:text-red-400 dark:focus:text-red-400">Delete</button>
+                          </form>
+                        </div>
+                        <div>
+                          <a  class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-pink-600 hover:text-pink-800 focus:outline-none focus:text-pink-800 disabled:opacity-50 disabled:pointer-events-none dark:text-pink-500 dark:hover:text-pink-400 dark:focus:text-pink-400">View Activity</a>
+                        </div>
+                        <div>
+                          <form action="{{ route("change-status-mk") }}"  method="POST">
+
+                            <!--CSRF-->
+                            @csrf
+
+                            <!--Method-->
+                            @method('PUT')
+                            <input type="hidden" name="id"  value="{{ $item->mm_id }}" />
+                            <button type="submit" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-yellow-600 hover:text-yellow-800 focus:outline-none focus:text-yellow-800 disabled:opacity-50 disabled:pointer-events-none dark:text-yellow-500 dark:hover:text-yellow-400 dark:focus:text-yellow-400">Change status</button>
+                          </form>
+                        </div>
+                      
+                    </td>
+                  </tr>
+                @endforeach
+    
               </tbody>
             </table>
           </div>
@@ -60,7 +155,7 @@
 
   <!-- RictText script-->
   <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
-  @vite('resources/js/RichText.js')  
+  
 
   <!-- dropZone for input file -->
   @vite('node_modules/lodash/lodash.min.js')  

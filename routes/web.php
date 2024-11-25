@@ -1,12 +1,14 @@
 <?php
 
-use App\Http\Controllers\CareersController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\CareersController;
 use App\Http\Controllers\NewsImgController;
 use App\Http\Controllers\PackageController;
-use App\Http\Controllers\PackageImgController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\PackageImgController;
+use App\Http\Controllers\AdminMarketingManager;
 
 Route::get('/', function () {
     return view('welcome');
@@ -64,16 +66,19 @@ Route::delete("admin/news/delete",[NewsController::class,"deletePackage"])->name
 
 
 
-
 //newsImgs
 Route::post("admin/news-imgs/change-status",[NewsImgController::class,"changeStatus"])->name("news-img-change-status");
 Route::delete("admin/news-imgs/delete",[NewsImgController::class,"deleteImg"])->name("news-img-delete");
 
 
+//admin marketing
+Route::get("admin/marketing/marketing-manager-list",[AdminMarketingManager::class,"showManagerList"])->name("marketing-manager-list");
+Route::put("admin/marketing/change-status",[AdminMarketingManager::class,"changeStatus"])->name("change-status-mk");
+Route::delete("admin/marketing/delete",[AdminMarketingManager::class,"deleteMM"])->name("delete_mk");
 
 
-
-
+//customer
+Route::get("admin/customer/contact-list",[CustomerController::class,"index"])->name("customer-contact-list");
 
 
 
@@ -120,9 +125,7 @@ Route::get("admin/careers/create-careers",function(){
 
 
 //admin customer contact -> start
-Route::get("admin/customer/contact-list",function(){
-    return view("admin.customer.customer-contact-view");
-})->name("customer-contact-list");
+
 
 Route::get("admin/customer/contact-manager-change",function(){
     return view("admin.customer.customer-manager-change");
@@ -132,13 +135,11 @@ Route::get("admin/customer/contact-manager-change",function(){
 
 
 //admin marketing - start
-Route::get("admin/marketing/create-marketing-manager",function(){
-    return view("admin.marketing.create-marketing-manager");
-})->name("create-marketing-manager");
+// Route::get("admin/marketing/create-marketing-manager",function(){
+//     return view("admin.marketing.create-marketing-manager");
+// })->name("create-marketing-manager");
 
-Route::get("admin/marketing/marketing-manager-list",function(){
-    return view("admin.marketing.marketing-manager-list");
-})->name("marketing-manager-list");
+
 
 Route::get("admin/marketing/marketing-manager-activity",function(){
     return view("admin.marketing.marketing-manager-activity");
@@ -172,6 +173,12 @@ Route::get("/marketing/change-order-status",function(){
     return view("marketing.change-order-status");
 })->name("change-order-status");
 
+
+Route::middleware("auth:marketing_manager")->get("/test-auth",function(){
+    return view("marketing.change-order-status");
+})->name("test-auth");
+
+
 //Marketing Profile End
 
 
@@ -192,7 +199,7 @@ Route::get("/marketing/change-order-status",function(){
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware("auth")->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -201,3 +208,4 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+require __DIR__.'/mm-auth.php';

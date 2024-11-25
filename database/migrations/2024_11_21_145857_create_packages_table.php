@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string("header",100);
             $table->string("header_url",100);
             $table->string("card_url",100);
-            $table->float("price",100);
             $table->text("body");
             $table->dateTime("created_time");
             $table->boolean("is_active");

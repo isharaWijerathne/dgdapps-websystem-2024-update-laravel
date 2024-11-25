@@ -1,5 +1,9 @@
 <?php
 
+use App\Models\MarketingManager;
+
+
+
 return [
 
     /*
@@ -40,6 +44,12 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'marketing_manager' => [
+            'driver' => 'session',
+            'provider' => 'marketing_managers',
+        ],
+        
     ],
 
     /*
@@ -64,6 +74,11 @@ return [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\User::class),
         ],
+
+        'marketing_managers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\MarketingManager::class,
+        ]
 
         // 'users' => [
         //     'driver' => 'database',
